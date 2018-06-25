@@ -35,7 +35,8 @@ public class WeightedRandom<T> {
     }
     
     public void add (T object, float weight) {
-        entries.add(new WeightedRandomEntry<> (object, weight));
+        if (weight>0)
+            entries.add(new WeightedRandomEntry<> (object, weight));
     }
     
     public T getRandom () {
