@@ -40,13 +40,15 @@ public class WeightedRandom<T> {
     }
     
     public T getRandom () {
+        if (entries.isEmpty()) return null;
+        
         // use regular for-loops here because order is important!
-        int total = 0;
+        float total = 0;
         for (int i=0;i<entries.size();i++) {
             total += entries.get(i).weight;
         }
         
-        float roll = SlickUtils.rand(0,total);
+        float roll = SlickUtils.rand(0f, total);
         float current = 0;
         
         for (int i=0;i<entries.size();i++) {
