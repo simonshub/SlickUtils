@@ -39,6 +39,10 @@ public class WeightedRandom<T> {
             entries.add(new WeightedRandomEntry<> (object, weight));
     }
     
+    public boolean isEmpty () {
+        return entries.isEmpty();
+    }
+    
     public T getRandom () {
         if (entries.isEmpty()) return null;
         
