@@ -323,9 +323,9 @@ public abstract class SlickUtils {
         return array[randIndex(array.length)];
     }
     
-    public static Object randArrayObjects (Object[] array, int amount) {
+    public static Object[] randArrayObjects (Object[] array, int amount) {
         if (amount == array.length) return array;
-        if (amount <= 0 || amount > array.length) amount = array.length;
+        
         shuffleArray(array);
         return Arrays.copyOfRange(array, 0, amount-1);
     }
@@ -336,6 +336,21 @@ public abstract class SlickUtils {
     
     public static Object randListObject (Collection<?> collection) {
         return randListObject(new ArrayList<> (collection));
+    }
+    
+    public static List<?> randListObjects (List<?> list, int amount) {
+        if (amount == list.size()) return list;
+        
+        List<Object> temp_list = new ArrayList<> (list);
+        List<Object> result_list = new ArrayList<> ();
+        
+        for (int i=0;i<amount;i++) {
+            int index = randIndex(temp_list.size());
+            result_list.add(temp_list.get(index));
+            temp_list.remove(index);
+        }
+        
+        return result_list;
     }
     
     public static boolean chanceRoll (double chance) {
