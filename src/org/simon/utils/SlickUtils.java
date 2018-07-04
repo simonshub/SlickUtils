@@ -31,6 +31,8 @@ public abstract class SlickUtils {
     public static final String ARG_DELIMITER = "=";
     public static final String LIST_DELIMITER = ";;";
     
+    private static final Random RANDOM = new Random ();
+    
     public static String[] splitArgs (String line, String delimiter) {
         if (line.contains(COMMENT))
             line = line.substring(0, line.indexOf(COMMENT));
@@ -220,10 +222,9 @@ public abstract class SlickUtils {
     
     public static void shuffleArray(Object[] a) {
         int n = a.length;
-        Random random = new Random();
-        random.nextInt();
+        RANDOM.nextInt();
         for (int i = 0; i < n; i++) {
-            int change = i + random.nextInt(n - i);
+            int change = i + RANDOM.nextInt(n - i);
             swap(a, i, change);
         }
     }
@@ -301,7 +302,7 @@ public abstract class SlickUtils {
         if (min==max)
             return max;
         
-        int result = (int)(Math.round(Math.random() * (max-min)) + min);
+        int result = (int)(Math.round(RANDOM.nextFloat() * (max-min)) + min);
         return result;
     }
     
@@ -311,12 +312,12 @@ public abstract class SlickUtils {
         if (min==max)
             return max;
         
-        float result = (float) ((Math.random() * (max-min)) + min);
+        float result = (float) ((RANDOM.nextFloat() * (max-min)) + min);
         return result;
     }
     
     public static int randIndex (int size) {
-        return (int)(Math.floor(Math.random()*size));
+        return (int)(Math.floor(RANDOM.nextFloat()*size));
     }
     
     public static Object randArrayObject (Object[] array) {
@@ -354,7 +355,7 @@ public abstract class SlickUtils {
     }
     
     public static boolean chanceRoll (double chance) {
-        return (Math.random()<=chance);
+        return (RANDOM.nextFloat()<=chance);
     }
     
     public static int randPlusMinus (int num, int plus, int minus) {
