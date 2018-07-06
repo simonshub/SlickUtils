@@ -358,6 +358,10 @@ public abstract class SlickUtils {
         return (RANDOM.nextFloat()<=chance);
     }
     
+    public static boolean chanceRoll (int chance) {
+        return chanceRoll(chance/100.);
+    }
+    
     public static int randPlusMinus (int num, int plus, int minus) {
         int offset = rand(minus,plus);
         return num+offset;
