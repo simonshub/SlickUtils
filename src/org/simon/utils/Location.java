@@ -45,13 +45,13 @@ public class Location {
         return Math.sqrt(dx*dx + dy*dy);
     }
     
-    public static float getDistanceF (Location loc1,Location loc2) {
+    public static float getDistanceF (Location loc1, Location loc2) {
         float dx = Math.abs(loc1.x-loc2.x);
         float dy = Math.abs(loc1.y-loc2.y);
         return (float)Math.sqrt(dx*dx + dy*dy);
     }
     
-    public static double getDistanceD (Location loc1,Location loc2) {
+    public static double getDistanceD (Location loc1, Location loc2) {
         double dx = Math.abs(loc1.x-loc2.x);
         double dy = Math.abs(loc1.y-loc2.y);
         return Math.sqrt(dx*dx + dy*dy);
@@ -73,11 +73,11 @@ public class Location {
         return !((x < upper_left.x) || (x > lower_right.x) || (y < upper_left.y) || (y > lower_right.y));
     }
     
-    public boolean isInBoundsWithDiff (Location upper_left, Location lower_right, int margin) {
+    public boolean isInBoundsWithDiff (Location upper_left, Location lower_right, float margin) {
         return isInBounds (new Location (upper_left.x-margin, upper_left.y-margin), new Location (lower_right.x+margin, lower_right.y+margin));
     }
     
-    public boolean isInRange (Location loc, int range) {
+    public boolean isInRange (Location loc, float range) {
         return (this.getDistanceF(loc) <= range);
     }
     
