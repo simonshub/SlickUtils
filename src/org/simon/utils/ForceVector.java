@@ -33,11 +33,4 @@ public class ForceVector {
         return x+","+y;
     }
     
-    public void fromString (String str) {
-        String[] args = str.trim().split(",");
-        if (args.length == 2) {
-            x = Float.parseFloat(args[0].trim());
-            y = Float.parseFloat(args[1].trim());
-        }
-    }
 }
