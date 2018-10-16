@@ -492,6 +492,14 @@ public abstract class SlickUtils {
             }
             return res + lines[lines.length-1];
         }
+
+        public static String concatObjectArray (Object[] lines, String separator) {
+            String res = "";
+            for (int i=0;i<lines.length-1;i++) {
+                res += lines[i].toString() + separator;
+            }
+            return res + lines[lines.length-1];
+        }
         
     }
     
