@@ -87,4 +87,17 @@ public class Location {
     public String toString () {
         return x+","+y;
     }
+    
+    @Override
+    public int hashCode () {
+    	return ((int)y)*100000 + ((int)x);
+    }
+    
+    @Override
+    public boolean equals (Object other) {
+    	if (other instanceof Location) {
+    		Location loc = (Location) other;
+    		return loc.x == this.x && loc.y == this.y;
+    	} else return false;
+    }
 }
