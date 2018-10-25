@@ -31,7 +31,7 @@ public abstract class SlickUtils {
     public static final String ARG_DELIMITER = "=";
     public static final String LIST_DELIMITER = ";;";
     
-    private static final Random RANDOM = new Random ();
+    private static Random RANDOM = new Random ();
     
     public static String[] splitArgs (String line, String delimiter) {
         if (line.contains(COMMENT))
@@ -370,6 +370,10 @@ public abstract class SlickUtils {
     public static float randPlusMinus (float num, float plus, float minus) {
         float offset = rand(minus,plus);
         return num+offset;
+    }
+    
+    public static void setSeed (int seed) {
+    	RANDOM = new Random (seed);
     }
     
     
