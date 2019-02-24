@@ -389,9 +389,12 @@ public abstract class SlickUtils {
             return getFileName(path).toLowerCase();
         }
         
-        public static File[] getFileArrayOfExtensionInSubdirs (File directory, String ext) {
+        public static File[] getFileArrayOfExtensionInSubdirs (File directory, String... ext) {
             List<File> subfiles = new ArrayList<> ();
-            subfiles.addAll(Arrays.asList(directory.listFiles( (File file, String name) -> (name.endsWith(ext.toLowerCase()) || name.endsWith(ext.toUpperCase())) ) ) );
+            for (String e : ext)
+                subfiles.addAll(Arrays.asList(directory.listFiles(
+                        (File file, String name) -> (name.endsWith(e.toLowerCase()) || name.endsWith(e.toUpperCase()))
+                ) ) );
 
             List<File> subdirectories = new ArrayList<> ();
             subdirectories.addAll(Arrays.asList(directory.listFiles((File dir) -> dir.isDirectory() ) ) );
@@ -404,16 +407,18 @@ public abstract class SlickUtils {
             return result_array;
         }
         
-        public static List<File> getFileListOfExtensionInSubdirs (File directory, String ext) {
+        public static List<File> getFileListOfExtensionInSubdirs (File directory, String... ext) {
             List<File> subfiles = new ArrayList<> ();
-            subfiles.addAll(Arrays.asList(directory.listFiles((File dir, String name) -> (name.endsWith(ext.toLowerCase()) || name.endsWith(ext.toUpperCase())) && dir.isFile() ) ) );
+            for (String e : ext)
+                subfiles.addAll(Arrays.asList(directory.listFiles(
+                        (File dir, String name) -> (name.endsWith(e.toLowerCase()) || name.endsWith(e.toUpperCase())) && dir.isFile()
+                ) ) );
 
             List<File> subdirectories = new ArrayList<> ();
             subdirectories.addAll(Arrays.asList(directory.listFiles((File dir) -> dir.isDirectory() ) ) );
 
             for (File subdirectory : subdirectories)
                 subfiles.addAll(getFileListOfExtensionInSubdirs(subdirectory, ext));
-
             return subfiles;
         }
     
